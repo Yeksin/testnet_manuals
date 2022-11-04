@@ -40,6 +40,10 @@ You can setup your okp4 fullnode in few minutes by using automated script below.
 ```
 wget -O okp4.sh https://raw.githubusercontent.com/yeksinNodes/testnet_manuals/main/okp4/okp4.sh && chmod +x okp4.sh && ./okp4.sh
 ```
+Wait for the installation to complete. After that execute the following command:
+```
+source $HOME/.bash_profile
+```
 
 ### Create wallet
 To create new wallet you can use command below. Don’t forget to save the mnemonic
