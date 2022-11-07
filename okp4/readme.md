@@ -1,7 +1,7 @@
 <p style="font-size:14px" align="right">
 <a href="https://t.me/yekssin" target="_blank">Telegram <img src="https://user-images.githubusercontent.com/110628975/200304455-120e6b06-2785-4c4f-8fc7-e9ef39dd653e.png" width="30"/></a>
 <a href="https://discordapp.com/users/418099630765637642" target="_blank">Discord <img src="https://user-images.githubusercontent.com/110628975/200304348-3539ebf8-e4f7-4b73-a259-35d06c41441e.png" width="30"/></a>
-<a href="https://yeksin.net/" target="_blank">Website <img src="https://user-images.githubusercontent.com/110628975/200304660-35b828fd-7382-426c-971d-7649541d45c0.png" width="30"/></a>
+<a href="https://yeksin.net/" target="_blank">Website <img src="https://user-images.githubusercontent.com/110628975/200305031-f2e42669-5ff7-48fd-abea-2be06d9a24d3.png" width="30"/></a>
 </p>
 
 <p align="center">
