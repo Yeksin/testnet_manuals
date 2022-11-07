@@ -38,7 +38,7 @@ You can follow [manual guide](https://github.com/yeksinNodes/testnet_manuals/blo
 ### Option 2 (automatic)
 You can setup your defund fullnode in few minutes by using automated script below. It will prompt you to input your validator node name!
 ```
-wget -O defund.sh https://raw.githubusercontent.comyeksinNodes/testnet_manuals/main/defund/defund.sh && chmod +x defund.sh && ./defund.sh
+wget -O defund.sh https://raw.githubusercontent.com/yeksinNodes/testnet_manuals/main/defund/defund.sh && chmod +x defund.sh && ./defund.sh
 ```
 
 When installation is finished please load variables into system
