@@ -33,25 +33,18 @@ Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
 
 ## Set up your nibiru fullnode
 
-### Option 1 (manual)
-You can follow [manual guide](https://github.com/yeksinNodes/testnet_manuals/blob/main/nibiru/manual_install.md) if you better prefer setting up node manually
-
-### Option 2 (automatic)
+### Option 1 (automatic)
 You can setup your nibiru fullnode in few minutes by using automated script below. It will prompt you to input your validator node name!
 ```
 wget -O nibiru.sh https://raw.githubusercontent.com/yeksinNodes/testnet_manuals/main/nibiru/nibiru.sh && chmod +x nibiru.sh && ./nibiru.sh
 ```
 
-## Post installation
+### Option 2 (manual)
+You can follow [manual guide](https://github.com/yeksinNodes/testnet_manuals/blob/main/nibiru/manual_install.md) if you better prefer setting up node manually
 
 When installation is finished please load variables into system
 ```
 source $HOME/.bash_profile
-```
-
-Next you have to make sure your validator is syncing blocks. You can use command below to check synchronization status
-```
-nibid status 2>&1 | jq .SyncInfo
 ```
 
 ### (OPTIONAL) State-Sync provided by PPNV Service
