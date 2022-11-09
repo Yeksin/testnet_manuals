@@ -8,10 +8,10 @@
   <img height="100" height="auto" src="https://user-images.githubusercontent.com/110628975/200312855-dcb6f2a5-c0cf-4372-b9a8-7b417d068421.png">
 </p>
 
-# defund node setup for testnet — defund-private-2
+# defund node setup for testnet — defund-private-3
 
 Official documentation:
->- [Validator setup instructions](https://github.com/defund-labs/testnet/blob/main/defund-private-2/README.md)
+>- [Validator setup instructions](https://github.com/defund-labs/testnet/blob/main/defund-private-3/README.md)
 
 Explorer:
 >-  https://explorer.yeksin.net/defund
