@@ -55,11 +55,12 @@ fi
 
 ## Download and build binaries
 ```
-cd $HOME && rm -rf loyal
-git clone https://github.com/LoyalLabs/loyal.git
-cd loyal
-git checkout v0.25.1.3
-make install
+cd $HOME
+wget https://github.com/LoyalLabs/loyal/releases/download/v0.25.1/loyal_v0.25.1_linux_amd64.tar.gz
+tar xzf loyal_v0.25.1_linux_amd64.tar.gz
+chmod 775 loyald
+sudo mv loyald /usr/local/bin/
+sudo rm loyal_v0.25.1_linux_amd64.tar.gz
 ```
 
 ## Config app
@@ -76,13 +77,13 @@ loyald init $NODENAME --chain-id $LOYAL_CHAIN_ID
 
 ## Download genesis
 ```
-curl -s https://raw.githubusercontent.com/LoyalLabs/net/main/mainnet/genesis.json | jq -r .result.genesis > $HOME/.loyal/config/genesis.json
+wget -qO $HOME/.loyal/config/genesis.json "https://raw.githubusercontent.com/LoyalLabs/net/main/mainnet/genesis.json"
 ```
 
 ## Set seeds and peers
 ```
 SEEDS="7490c272d1c9db40b7b9b61b0df3bb4365cb63a6@loyal-seed.netdots.net:26656,b66ecdf36bb19a9af0460b3ae0901aece93ae006@pubnode1.joinloyal.io:26656"
-PEERS=""
+PEERS="ecd750c265d8f0854ab8dc99a1d982ad5e386715@142.132.201.130:26656,6ba67d63da4123161c1f733cdce9a46f6819b72c@109.123.243.66:2566,af4add23aaca23dba019a125705e2ee6cc24bc35@50.21.186.177:2566"
 sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.loyal/config/config.toml
 ```
 
@@ -123,7 +124,7 @@ loyald tendermint unsafe-reset-all --home $HOME/.loyal
 ```
 sudo tee /etc/systemd/system/loyald.service > /dev/null <<EOF
 [Unit]
-Description=nibi
+Description=loyal
 After=network-online.target
 
 [Service]
