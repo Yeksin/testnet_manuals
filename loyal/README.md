@@ -74,7 +74,7 @@ source $HOME/.bash_profile
 ```
 
 ### Create validator
-Before creating validator please make sure that you have at least 1 nibi (1 nibi is equal to 1000000 ulyl) and your node is synchronized
+Before creating validator please make sure that you have at least 1 lyl (1 lyl is equal to 1000000 ulyl) and your node is synchronized
 
 To check your wallet balance:
 ```
@@ -222,7 +222,7 @@ This commands will completely remove node from server. Use at your own risk!
 ```
 sudo systemctl stop loyald
 sudo systemctl disable loyald
-sudo rm /etc/systemd/system/nibi* -rf
+sudo rm /etc/systemd/system/loyald* -rf
 sudo rm $(which loyald) -rf
 sudo rm $HOME/.loyal* -rf
 sudo rm $HOME/loyal -rf
