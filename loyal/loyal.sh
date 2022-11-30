@@ -76,7 +76,7 @@ loyald config node tcp://localhost:${LOYAL_PORT}657
 loyald init $NODENAME --chain-id $LOYAL_CHAIN_ID
 
 # download genesis
-wget -qO $HOME/.loyal/config/genesis.json "https://raw.githubusercontent.com/LoyalLabs/net/main/testnet/genesis.json"
+wget -qO $HOME/.loyal/config/genesis.json "https://raw.githubusercontent.com/LoyalLabs/net/main/mainnet/genesis.json"
 
 # set peers and seeds
 SEEDS="7490c272d1c9db40b7b9b61b0df3bb4365cb63a6@loyal-seed.netdots.net:26656,b66ecdf36bb19a9af0460b3ae0901aece93ae006@pubnode1.joinloyal.io:26656"
