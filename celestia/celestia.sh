@@ -63,7 +63,7 @@ cd $HOME
 rm -rf celestia-app
 git clone https://github.com/celestiaorg/celestia-app.git
 cd celestia-app
-git checkout v0.9.0
+git checkout v0.6.0
 make install
 
 # download network tools
@@ -79,8 +79,8 @@ celestia-appd config node tcp://localhost:${CELESTIA_PORT}657
 # init
 celestia-appd init $NODENAME --chain-id $CELESTIA_CHAIN_ID
 
-# download genesis and addrbook
-cp $HOME/networks/$CELESTIA_CHAIN_ID/genesis.json $HOME/.celestia-app/config
+# download genesis
+wget https://raw.githubusercontent.com/celestiaorg/networks/master/mamaki/genesis.json -O $HOME/.celestia-app/config/genesis.json
 
 # set seeds, peers and boot nodes
 BOOTSTRAP_PEERS=$(curl -sL https://raw.githubusercontent.com/celestiaorg/networks/master/mamaki/bootstrap-peers.txt | tr -d '\n')
