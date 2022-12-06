@@ -61,7 +61,7 @@ fi
 echo -e "\e[1m\e[32m3. Downloading and building binaries... \e[0m" && sleep 1
 # download and build binaries
 cd $HOME && rm -rf realio-network
-git clone hhttps://github.com/realiotech/realio-network.git && cd realio-network
+git clone https://github.com/realiotech/realio-network.git && cd realio-network
 git checkout v0.6.2
 make install
 
