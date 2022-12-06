@@ -24,7 +24,7 @@ echo "export NODENAME=$NODENAME" >> $HOME/.bash_profile
 if [ ! $WALLET ]; then
 	echo "export WALLET=wallet" >> $HOME/.bash_profile
 fi
-echo "export REALIO_CHAIN_ID=sge-testnet-1" >> $HOME/.bash_profile
+echo "export REALIO_CHAIN_ID=realionetwork_1110-2" >> $HOME/.bash_profile
 echo "export REALIO_PORT=${REALIO_PORT}" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
@@ -105,7 +105,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 
 ## Set minimum gas price and timeout commit
 ```
-sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0usge\"/" $HOME/.realio-network/config/app.toml
+sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0ario\"/" $HOME/.realio-network/config/app.toml
 ```
 
 ## Enable prometheus
