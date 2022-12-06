@@ -56,7 +56,7 @@ fi
 ## Download and build binaries
 ```
 cd $HOME && rm -rf realio-network
-git clone hhttps://github.com/realiotech/realio-network.git && cd realio-network
+git clone https://github.com/realiotech/realio-network.git && cd realio-network
 git checkout v0.6.2
 make install
 ```
