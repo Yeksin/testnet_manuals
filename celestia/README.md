@@ -17,9 +17,6 @@ Official documentation:
 Yeksin Explorer:
 - https://explorer.yeksin.net/celestia
 
-Yeksin Faucet:
-- https://faucet-celestia.yeksin.net
-
 API:
 - https://api-celestia.yeksin.net
 
