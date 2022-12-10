@@ -11,7 +11,7 @@
 # realio node setup for testnet — realionetwork_1110-2
 
 Explorer:
->-  https://explorer.yeksin.net/realio
+>-  https://explorers.yeksin.net/realio
 
 ## Hardware Requirements
 Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
