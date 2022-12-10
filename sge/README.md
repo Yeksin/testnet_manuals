@@ -11,7 +11,7 @@
 # sge node setup for testnet — sge-testnet-1
 
 Explorer:
->-  https://explorer.yeksin.net/sge
+>-  https://explorers.yeksin.net/sge
 
 ## Hardware Requirements
 Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
