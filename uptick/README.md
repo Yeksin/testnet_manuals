@@ -14,7 +14,7 @@ Official documentation:
 >- [Validator setup instructions](https://docs.uptick.network/testnet/)
 
 Explorer:
->-  https://explorer.testnet.uptick.network/uptick-network-testnet
+>-  https://explorers.testnet.uptick.network/uptick-network-testnet
 
 ## Hardware Requirements
 Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
