@@ -11,7 +11,7 @@
 # humans node setup for testnet — testnet-1
 
 Explorer:
->-  https://explorer.yeksin.net/humans
+>-  https://explorers.yeksin.net/humans
 
 ## Hardware Requirements
 Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
