@@ -8,7 +8,7 @@
   <img height="100" height="auto" src="https://user-images.githubusercontent.com/110628975/207418559-7dbc2397-9df8-4e34-b9fc-7f2365c3ed09.png">
 </p>
 
-# humans node setup for testnet — testnet-1
+# humans node setup for testnet-1
 
 Explorer:
 >-  https://explorers.yeksin.net/humans
