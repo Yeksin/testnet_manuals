@@ -10,6 +10,9 @@
 
 # nolus node setup for testnet — nolus-rila
 
+Website:
+>-  https://nolus.io
+>
 Official documentation:
 >- [Validator setup instructions](https://docs-nolus-protocol.notion.site/Run-a-Validator-3b2657bc68ca4eb3a24078a2ccbb7680)
 
