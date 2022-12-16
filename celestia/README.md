@@ -9,7 +9,7 @@
 </p>
 
 
-# Celestia node setup for testnet — mamaki
+# Celestia node setup for testnet — mocha
 
 Official documentation:
 - https://docs.celestia.org/nodes/overview
@@ -44,15 +44,22 @@ When installation is finished please load variables into system
 source $HOME/.bash_profile
 ```
 
-### (OPTIONAL) Use Quick Sync by restoring data from snapshot
+### (OPTIONAL) Use Snapshot by kjnodes
 ```
 systemctl stop celestia-appd
-celestia-appd tendermint unsafe-reset-all --home $HOME/.celestia-app
+cp $HOME/.celestia-app/data/priv_validator_state.json $HOME/.celestia-app/priv_validator_state.json.backup
+```
+
+```
 cd $HOME
 rm -rf ~/.celestia-app/data
-mkdir -p ~/.celestia-app/data
-SNAP_NAME=$(curl -s https://snaps.qubelabs.io/celestia/ | egrep -o ">mamaki.*tar" | tr -d ">")
-wget -O - https://snaps.qubelabs.io/celestia/${SNAP_NAME} | tar xf - -C ~/.celestia-app/data/
+curl -L https://snapshots.kjnodes.com/celestia-testnet/snapshot_latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.celestia-app
+```
+
+```
+mv $HOME/.celestia-app/priv_validator_state.json.backup $HOME/.celestia-app/data/priv_validator_state.json
+```
+```
 systemctl restart celestia-appd && journalctl -fu celestia-appd -o cat
 ```
 
