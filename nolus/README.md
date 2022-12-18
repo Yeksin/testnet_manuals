@@ -17,16 +17,13 @@ Official documentation:
 >- [Validator setup instructions](https://docs-nolus-protocol.notion.site/Run-a-Validator-3b2657bc68ca4eb3a24078a2ccbb7680)
 
 Explorer:
->-  https://explorers.yeksin.net/nolus
-
-Faucet:
->-  https://faucet-rila.nolus.io
+>-  https://explorers.yeksin.net/nolus-testnet
 
 API:
->-  https://nolus-api.yeksin.net
+>-  https://nolus.api.yeksin.net
 
 RPC:
->-  https://nolus-rpc.yeksin.net
+>-  https://nolus.rpc.yeksin.net
 
 ## Hardware Requirements
 Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
