@@ -18,10 +18,10 @@ Yeksin Explorer:
 - https://explorers.yeksin.net/celestia
 
 API:
-- https://celestia-api.yeksin.net
+- https://celestia.api.yeksin.net
 
 RPC:
-- https://celestia-rpc.yeksin.net
+- https://celestia.rpc.yeksin.net
 
 ## Hardware requirements
 - Memory: 8 GB RAM
