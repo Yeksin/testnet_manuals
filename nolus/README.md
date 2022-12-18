@@ -97,7 +97,7 @@ source $HOME/.bash_profile
 ```
 
 ### Create validator
-Before creating validator please make sure that you have at least 1 strd (1 strd is equal to 1000000 unls) and your node is synchronized
+Before creating validator please make sure that you have at least 1 NLS (1 NLS is equal to 1000000 unls) and your node is synchronized
 
 To check your wallet balance:
 ```
