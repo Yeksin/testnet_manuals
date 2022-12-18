@@ -15,7 +15,7 @@ Official documentation:
 - https://docs.celestia.org/nodes/overview
 
 Yeksin Explorer:
-- https://explorers.yeksin.net/celestia
+- https://explorers.yeksin.net/celestia-testnet
 
 API:
 - https://celestia.api.yeksin.net
