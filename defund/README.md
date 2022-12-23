@@ -13,9 +13,6 @@
 Official documentation:
 >- [Validator setup instructions](https://github.com/defund-labs/testnet/blob/main/defund-private-3/README.md)
 
-Explorer:
->-  https://explorers.yeksin.net/defund
-
 ## Hardware Requirements
 Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
 
