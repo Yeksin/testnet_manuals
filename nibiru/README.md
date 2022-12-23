@@ -14,7 +14,7 @@ Official documentation:
 >- [Validator setup instructions](https://docs.nibiru.fi/run-nodes/testnet/)
 
 Explorer:
->-  https://explorers.yeksin.net/nibiru
+>-  https://explorers.yeksin.net/nibiru-testnet
 
 ## Hardware Requirements
 Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
