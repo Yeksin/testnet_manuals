@@ -14,7 +14,7 @@ Official documentation:
 >- [Validator setup instructions](https://docs.gitopia.com/installation/index.html)
 
 Explorer:
->-  https://explorers.yeksin.net/gitopia
+>-  https://explorers.yeksin.net/gitopia-testnet
 
 ## Hardware Requirements
 Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
