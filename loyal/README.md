@@ -13,9 +13,6 @@
 Official documentation:
 >- [Validator setup instructions](https://docs.joinloyal.io/validators/)
 
-Explorer:
->-  https://explorers.yeksin.net/loyal
-
 ## Hardware Requirements
 Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
 
