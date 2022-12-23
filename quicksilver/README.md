@@ -16,12 +16,6 @@ Quicksilver Official Website:
 Explorer:
 >-  https://explorers.yeksin.net/quicksilver
 
-API:
->-  https://quicksilver.api.yeksin.net
-
-RPC:
->-  https://quicksilver.rpc.yeksin.net
-
 ## Hardware Requirements
 Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
 
