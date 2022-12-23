@@ -14,7 +14,7 @@ Official documentation:
 >- [Validator setup instructions](https://docs.ollo.zone/validators/running_a_node)
 
 Explorer:
->-  https://explorers.yeksin.net/ollo
+>-  https://explorers.yeksin.net/ollo-testnet
 
 ## Hardware Requirements
 Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
