@@ -74,9 +74,10 @@ nolusd config node tcp://localhost:${NOLUS_PORT}657
 nolusd init $NODENAME --chain-id $NOLUS_CHAIN_ID
 ```
 
-## Download genesis
+## Download genesis and addrbook
 ```
 wget -qO $HOME/.nolus/config/genesis.json wget "https://snapshot.yeksin.net/nolus/genesis.json"
+wget -qO $HOME/.nolus/config/addrbook.json wget "https://snapshot.yeksin.net/nolus/addrbook.json"
 ```
 
 ## Set seeds and peers
