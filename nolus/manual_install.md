@@ -76,7 +76,7 @@ nolusd init $NODENAME --chain-id $NOLUS_CHAIN_ID
 
 ## Download genesis
 ```
-wget -qO $HOME/.nolus/config/genesis.json wget "https://raw.githubusercontent.com/Nolus-Protocol/nolus-networks/main/testnet/nolus-rila/genesis.json"
+wget -qO $HOME/.nolus/config/genesis.json wget "https://snapshot.yeksin.net/nolus/genesis.json"
 ```
 
 ## Set seeds and peers
