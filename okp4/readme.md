@@ -13,9 +13,6 @@
 Official documentation:
 >- [Validator setup instructions](https://docs.okp4.network/docs/nodes/run-node)
 
-Explorer:
->-  https://explorers.yeksin.net/okp4
-
 ## Hardware Requirements
 Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
 
