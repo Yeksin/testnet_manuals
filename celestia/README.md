@@ -35,7 +35,7 @@ You can follow [manual guide](https://github.com/yeksinNodes/testnet_manuals/blo
 ### Option 2 (automatic)
 You can setup your celestia fullnode in few minutes by using automated script below. It will prompt you to input your validator node name!
 ```
-wget -O celestia.sh https://raw.githubusercontent.com/yeksinNodes/testnet_manuals/main/celestia/celestia.sh && chmod +x celestia.sh && ./celestia.sh
+wget -O celestia.sh https://raw.githubusercontent.com/yeksinNodes/testnet_manuals/main/celestiacelestia/celestia.sh && chmod +x celestia.sh && ./celestia.sh
 ```
 
 When installation is finished please load variables into system
@@ -43,17 +43,9 @@ When installation is finished please load variables into system
 source $HOME/.bash_profile
 ```
 
-### (OPTIONAL) Use Quick Sync by restoring data from snapshot
-```
-systemctl stop celestia-appd
-celestia-appd tendermint unsafe-reset-all --home $HOME/.celestia-app
-cd $HOME
-rm -rf ~/.celestia-app/data
-mkdir -p ~/.celestia-app/data
-SNAP_NAME=$(curl -s https://snaps.qubelabs.io/celestia/ | egrep -o ">mamaki.*tar" | tr -d ">")
-wget -O - https://snaps.qubelabs.io/celestia/${SNAP_NAME} | tar xf - -C ~/.celestia-app/data/
-systemctl restart celestia-appd && journalctl -fu celestia-appd -o cat
-```
+## Check out our Snapshot and State-sync services to join the network faster.
+- ### <a href="https://github.com/yeksinNodes/testnet_manuals/blob/main/celestia/snapshot.md" target="_blank">Snapshot </a>(everyday 19:00 UTC)
+- ### <a href="https://github.com/yeksinNodes/testnet_manuals/blob/main/celestiacelestia/state-sync.md" target="_blank">State-Sync </a>
 
 ### Create wallet
 To create new wallet you can use command below. Don’t forget to save the mnemonic
