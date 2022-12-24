@@ -44,23 +44,9 @@ When installation is finished please load variables into system
 source $HOME/.bash_profile
 ```
 
-### (OPTIONAL) Use Snapshot by Polkachu (Height 337325)
-```
-systemctl stop humansd
-
-humansd tendermint unsafe-reset-all --home $HOME/.humans
-
-cd $HOME
-rm -rf ~/.humans/data
-mkdir -p ~/.humans/data
-
-wget -O humans_337325.tar.lz4 https://snapshots.polkachu.com/testnet-snapshots/humans/humans_337325.tar.lz4 --inet4-only
-
-lz4 -c -d humans_337325.tar.lz4  | tar -x -C $HOME/.humans
-rm -v humans_337325.tar.lz4
-
-systemctl restart humans && journalctl -fu humans -o cat
-```
+## Check out our Snapshot and State-sync services to join the network faster.
+- ### <a href="https://github.com/yeksinNodes/testnet_manuals/blob/main/humans/snapshot.md" target="_blank">Snapshot </a>(everyday 19:00 UTC)
+- ### <a href="https://github.com/yeksinNodes/testnet_manuals/blob/main/humans/state-sync.md" target="_blank">State-Sync </a>
 
 ### Create wallet
 To create new wallet you can use command below. Don’t forget to save the mnemonic
