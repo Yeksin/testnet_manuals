@@ -54,21 +54,10 @@ When installation is finished please load variables into system
 ```
 source $HOME/.bash_profile
 ```
-### (Optional) Snapshot by kjnodes 
-```
-sudo systemctl stop nolusd
-cp $HOME/.nolus/data/priv_validator_state.json $HOME/.nolus/priv_validator_state.json.backup
-rm -rf $HOME/.nolus/data
-```
 
-```
-curl -L https://snapshots.kjnodes.com/nolus-testnet/snapshot_latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.nolus
-mv $HOME/.nolus/priv_validator_state.json.backup $HOME/.nolus/data/priv_validator_state.json
-```
-
-```
-sudo systemctl start nolusd && journalctl -u nolusd -f --no-hostname -o cat
-```
+## Check out our Snapshot and State-sync services to join the network faster.
+- ### <a href="https://github.com/yeksinNodes/testnet_manuals/blob/main/nolus/snapshot.md" target="_blank">Snapshot </a>(everyday 19:00 UTC)
+- ### <a href="https://github.com/yeksinNodes/testnet_manuals/blob/main/nolus/state-sync.md" target="_blank">State-Sync </a>
 
 ### Create wallet
 To create new wallet you can use command below. Don’t forget to save the mnemonic
