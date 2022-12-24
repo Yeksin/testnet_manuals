@@ -75,9 +75,13 @@ sged config node tcp://localhost:${SGE_PORT}657
 sged init $NODENAME --chain-id $SGE_CHAIN_ID
 ```
 
-## Download genesis
+## Download Genesis
 ```
-wget https://raw.githubusercontent.com/sge-network/networks/master/sge-testnet-1/genesis.json -O $HOME/.sge/config/genesis.json
+wget -qO $HOME/.sge/config/genesis.json wget "https://snapshot.yeksin.net/sge/genesis.json"
+```
+## Download Addrbook (updates every: 1h)
+```
+wget -qO $HOME/.sge/config/addrbook.json wget "https://snapshot.yeksin.net/sge/addrbook.json"
 ```
 
 ## Set seeds and peers
