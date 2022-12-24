@@ -48,6 +48,7 @@ source $HOME/.bash_profile
 - ### <a href="https://github.com/yeksinNodes/testnet_manuals/blob/main/realio/snapshot.md" target="_blank">Snapshot </a>(everyday 19:00 UTC)
 - ### <a href="https://github.com/yeksinNodes/testnet_manuals/blob/main/realio/state-sync.md" target="_blank">State-Sync </a>
 
+
 ### Create wallet
 To create new wallet you can use command below. Don’t forget to save the mnemonic
 ```
