@@ -42,6 +42,10 @@ When installation is finished please load variables into system
 source $HOME/.bash_profile
 ```
 
+## Check out our Snapshot and State-sync services to join the network faster.
+- ### <a href="https://github.com/yeksinNodes/testnet_manuals/blob/main/sge/snapshot.md" target="_blank">Snapshot </a>(everyday 19:00 UTC)
+- ### <a href="https://github.com/yeksinNodes/testnet_manuals/blob/main/sge/state-sync.md" target="_blank">State-Sync </a>
+
 ### Create wallet
 To create new wallet you can use command below. Don’t forget to save the mnemonic
 ```
