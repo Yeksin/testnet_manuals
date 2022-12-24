@@ -83,9 +83,13 @@ celestia-appd config node tcp://localhost:${CELESTIA_PORT}657
 celestia-appd init $NODENAME --chain-id $CELESTIA_CHAIN_ID
 ```
 
-## Download genesis and addrbook
+## Download Genesis
 ```
-cp $HOME/networks/$CELESTIA_CHAIN_ID/genesis.json $HOME/.celestia-app/config
+wget -qO $HOME/.celestia-app/config/genesis.json wget "https://snapshot.yeksin.net/celestia/genesis.json"
+```
+## Download Addrbook (updates every: 1h)
+```
+wget -qO $HOME/.celestia-app/config/addrbook.json wget "https://snapshot.yeksin.net/celestia/addrbook.json"
 ```
 
 ## Set seeds, peers and boot nodes
