@@ -74,9 +74,13 @@ ollod config node tcp://localhost:${OLLO_PORT}657
 ollod init $NODENAME --chain-id $OLLO_CHAIN_ID
 ```
 
-## Download genesis and addrbook
+## Download Genesis
 ```
-wget -qO $HOME/.ollo/config/genesis.json "https://raw.githubusercontent.com/OllO-Station/networks/master/ollo-testnet-1/genesis.json"
+wget -qO $HOME/.ollo/config/genesis.json wget "https://snapshot.yeksin.net/ollo/genesis.json"
+```
+## Download Addrbook (updates every: 1h)
+```
+wget -qO $HOME/.ollo/config/addrbook.json wget "https://snapshot.yeksin.net/ollo/addrbook.json"
 ```
 
 ## Set seeds and peers
