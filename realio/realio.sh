@@ -74,7 +74,8 @@ realio-networkd config node tcp://localhost:${REALIO_PORT}657
 realio-networkd init $NODENAME --chain-id $REALIO_CHAIN_ID
 
 # download genesis
-wget https://raw.githubusercontent.com/realiotech/testnets/main/realionetwork_1110-2/genesis.json -O $HOME/.realio-network/config/genesis.json
+wget -qO $HOME/.realio-network/config/genesis.json wget "https://snapshot.yeksin.net/realio/genesis.json"
+wget -qO $HOME/.realio-network/config/addrbook.json wget "https://snapshot.yeksin.net/realio/addrbook.json"
 
 # set peers and seeds
 SEEDS="aa194e9f9add331ee8ba15d2c3d8860c5a50713f@143.110.230.177:26656"
