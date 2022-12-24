@@ -74,8 +74,9 @@ celestia-appd config node tcp://localhost:${CELESTIA_PORT}657
 # init
 celestia-appd init $NODENAME --chain-id $CELESTIA_CHAIN_ID
 
-# download genesis
-wget https://raw.githubusercontent.com/celestiaorg/networks/master/mocha/genesis.json -O $HOME/.celestia-app/config/genesis.json
+# download genesis and addrbook
+wget -qO $HOME/.celestia-app/config/genesis.json wget "https://snapshot.yeksin.net/celestia/genesis.json"
+wget -qO $HOME/.celestia-app/config/addrbook.json wget "https://snapshot.yeksin.net/celestia/addrbook.json"
 
 # set seeds and custom ports
 sed -i -e "s|^seeds *=.*|seeds = \"3f472746f46493309650e5a033076689996c8881@celestia-testnet.rpc.kjnodes.com:20659\"|" $HOME/.celestia-app/config/config.toml
