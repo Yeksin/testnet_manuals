@@ -75,9 +75,13 @@ humansd config node tcp://localhost:${HUMANS_PORT}657
 humansd init $NODENAME --chain-id $HUMANS_CHAIN_ID
 ```
 
-## Download genesis
+## Download Genesis
 ```
-wget https://snapshots.polkachu.com/testnet-genesis/humans/genesis.json -O $HOME/.humans/config/genesis.json
+wget -qO $HOME/.humans/config/genesis.json wget "https://snapshot.yeksin.net/humans/genesis.json"
+```
+## Download Addrbook (updates every: 1h)
+```
+wget -qO $HOME/.humans/config/addrbook.json wget "https://snapshot.yeksin.net/humans/addrbook.json"
 ```
 
 ## Set seeds and peers
