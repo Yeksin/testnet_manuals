@@ -100,15 +100,24 @@ celestia-appd query bank balances $CELESTIA_WALLET_ADDRESS
 To create your validator run command below
 ```
 celestia-appd tx staking create-validator \
-  --amount 1000000utia \
-  --from $WALLET \
-  --commission-max-change-rate "0.01" \
-  --commission-max-rate "0.2" \
-  --commission-rate "0.07" \
-  --min-self-delegation "1" \
-  --pubkey  $(celestia-appd tendermint show-validator) \
-  --moniker $NODENAME \
-  --chain-id $CELESTIA_CHAIN_ID
+--amount=1000000utia \
+--pubkey=$(celestia-appd tendermint show-validator) \
+--moniker="YOUR_MONIKER_NAME" \
+--identity="YOUR_KEYBASE_ID" \
+--details="YOUR_DETAILS" \
+--website="YOUR_WEBSITE_URL"
+--evm-address="YOUR_EVM_ADDRESS" \
+--orchestrator-address="YOUR_ORCHESTRATOR_ADDRESS" \
+--chain-id=mocha \
+--commission-rate=0.05 \
+--commission-max-rate=0.20 \
+--commission-max-change-rate=0.01 \
+--min-self-delegation=1 \
+--from=$WALLET \
+--gas-adjustment=1.4 \
+--gas=auto \
+--fees=1000utia \
+-y
 ```
 
 ## Get currently connected peer list with ids
