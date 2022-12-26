@@ -25,7 +25,7 @@ echo "export NODENAME=$NODENAME" >> $HOME/.bash_profile
 if [ ! $WALLET ]; then
 	echo "export WALLET=wallet" >> $HOME/.bash_profile
 fi
-echo "export CELESTIA_CHAIN_ID=mamaki" >> $HOME/.bash_profile
+echo "export CELESTIA_CHAIN_ID=mocha" >> $HOME/.bash_profile
 echo "export CELESTIA_PORT=${CELESTIA_PORT}" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
@@ -60,16 +60,10 @@ cd $HOME
 rm -rf celestia-app
 git clone https://github.com/celestiaorg/celestia-app.git
 cd celestia-app
-git checkout git checkout v0.9.0
+git checkout v0.11.0
 make install
 ```
 
-## Download network tools
-```
-cd $HOME
-rm -rf networks
-git clone https://github.com/celestiaorg/networks.git
-```
 
 ## Config app
 ```
@@ -92,13 +86,11 @@ wget -qO $HOME/.celestia-app/config/genesis.json wget "https://snapshot.yeksin.n
 wget -qO $HOME/.celestia-app/config/addrbook.json wget "https://snapshot.yeksin.net/celestia/addrbook.json"
 ```
 
-## Set seeds, peers and boot nodes
+## Set peers and seeds
 ```
-BOOTSTRAP_PEERS=$(curl -sL https://raw.githubusercontent.com/celestiaorg/networks/master/mamaki/bootstrap-peers.txt | tr -d '\n')
-MY_PEER=$(celestia-appd tendermint show-node-id)@$(curl -s ifconfig.me)$(grep -A 9 "\[p2p\]" ~/.celestia-app/config/config.toml | egrep -o ":[0-9]+")
-PEERS=$(curl -sL https://raw.githubusercontent.com/celestiaorg/networks/master/mamaki/peers.txt | tr -d '\n' | head -c -1 | sed s/"$MY_PEER"// | sed "s/,,/,/g")
-sed -i.bak -e "s/^bootstrap-peers *=.*/bootstrap-peers = \"$BOOTSTRAP_PEERS\"/" $HOME/.celestia-app/config/config.toml
+PEERS=$(curl -sL https://raw.githubusercontent.com/celestiaorg/networks/master/mocha/peers.txt | tr -d '\n' | head -c -1 | sed s/"$MY_PEER"// | sed "s/,,/,/g")
 sed -i.bak -e "s/^persistent-peers *=.*/persistent-peers = \"$PEERS\"/" $HOME/.celestia-app/config/config.toml
+sed -i -e "s|^seeds *=.*|seeds = \"8084e73b70dbe7fba3602be586de45a516012e6f@144.76.112.238:26656\"|" $HOME/.celestia-app/config/config.toml
 ```
 
 ## Use custom settings
@@ -124,7 +116,7 @@ sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${C
 pruning="custom"
 pruning_keep_recent="100"
 pruning_keep_every="0"
-pruning_interval="50"
+pruning_interval="10"
 sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" $HOME/.celestia-app/config/app.toml
 sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" $HOME/.celestia-app/config/app.toml
 sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.celestia-app/config/app.toml
