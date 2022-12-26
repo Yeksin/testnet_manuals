@@ -30,13 +30,13 @@ Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
 
 ## Set up your realio node
 ### Option 1 (manual)
-You can follow [manual guide](https://github.com/yeksinNodes/testnet_manuals/blob/main/realio/manual_install.md) if you better prefer setting up node manually
+You can follow [manual guide](https://github.com/yeksin/testnet_manuals/blob/main/realio/manual_install.md) if you better prefer setting up node manually
 
 
 ### Option 2 (automatic)
 You can setup your realio fullnode in few minutes by using automated script below. It will prompt you to input your validator node name!
 ```
-wget -O realio.sh https://raw.githubusercontent.com/yeksinNodes/testnet_manuals/main/realio/realio.sh && chmod +x realio.sh && ./realio.sh
+wget -O realio.sh https://raw.githubusercontent.com/yeksin/testnet_manuals/main/realio/realio.sh && chmod +x realio.sh && ./realio.sh
 ```
 
 When installation is finished please load variables into system
@@ -45,8 +45,8 @@ source $HOME/.bash_profile
 ```
 
 ## Check out our Snapshot and State-sync services to join the network faster.
-- ### <a href="https://github.com/yeksinNodes/testnet_manuals/blob/main/realio/snapshot.md" target="_blank">Snapshot </a>(everyday 19:00 UTC)
-- ### <a href="https://github.com/yeksinNodes/testnet_manuals/blob/main/realio/state-sync.md" target="_blank">State-Sync </a>
+- ### <a href="https://github.com/yeksin/testnet_manuals/blob/main/realio/snapshot.md" target="_blank">Snapshot </a>(everyday 19:00 UTC)
+- ### <a href="https://github.com/yeksin/testnet_manuals/blob/main/realio/state-sync.md" target="_blank">State-Sync </a>
 
 
 ### Create wallet
