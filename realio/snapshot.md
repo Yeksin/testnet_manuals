@@ -2,7 +2,7 @@
 
 ## Check block height, snapshot time and file size from this <a href="https://snapshot.yeksin.net/realio/current_state.txt" target="_blank">FILE </a>
 
-Snapshots are taken automatically each day at **19:00 UTC**
+Snapshots are taken automatically each day at **21:00 UTC**
 
 - **pruning**: custom/100/0/10 | **indexer**: null
 
