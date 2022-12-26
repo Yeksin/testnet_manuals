@@ -8,13 +8,13 @@
   <img height="100" height="auto" src="https://user-images.githubusercontent.com/110628975/205171502-6b467aee-e032-4c27-ae93-3bdcc63b6ef1.png">
 </p>
 
-# Celestia node setup for testnet — mamaki
+# Celestia node setup for testnet — mocha
 
 Official documentation:
 - https://docs.celestia.org/nodes/overview
 
 Explorer:
-- https://explorers.yeksin.net/celestiacelestia-testnet
+- https://explorers.yeksin.net/celestia-testnet
 
 API:
 - https://celestia.api.yeksin.net
@@ -30,12 +30,12 @@ RPC:
 
 ## Set up your celestia fullnode
 ### Option 1 (manual)
-You can follow [manual guide](https://github.com/yeksinNodes/testnet_manuals/blob/main/celestia/manual_install.md) if you better prefer setting up node manually
+You can follow [manual guide](https://github.com/yeksin/testnet_manuals/blob/main/celestia/manual_install.md) if you better prefer setting up node manually
 
 ### Option 2 (automatic)
 You can setup your celestia fullnode in few minutes by using automated script below. It will prompt you to input your validator node name!
 ```
-wget -O celestia.sh https://raw.githubusercontent.com/yeksinNodes/testnet_manuals/main/celestiacelestia/celestia.sh && chmod +x celestia.sh && ./celestia.sh
+wget -O celestia.sh https://raw.githubusercontent.com/yeksin/testnet_manuals/main/celestiacelestia/celestia.sh && chmod +x celestia.sh && ./celestia.sh
 ```
 
 When installation is finished please load variables into system
@@ -44,8 +44,8 @@ source $HOME/.bash_profile
 ```
 
 ## Check out our Snapshot and State-sync services to join the network faster.
-- ### <a href="https://github.com/yeksinNodes/testnet_manuals/blob/main/celestia/snapshot.md" target="_blank">Snapshot </a>(everyday 19:00 UTC)
-- ### <a href="https://github.com/yeksinNodes/testnet_manuals/blob/main/celestiacelestia/state-sync.md" target="_blank">State-Sync </a>
+- ### <a href="https://github.com/yeksin/testnet_manuals/blob/main/celestia/snapshot.md" target="_blank">Snapshot </a>(everyday 19:00 UTC)
+- ### <a href="https://github.com/yeksin/testnet_manuals/blob/main/celestiacelestia/state-sync.md" target="_blank">State-Sync </a>
 
 ### Create wallet
 To create new wallet you can use command below. Don’t forget to save the mnemonic
