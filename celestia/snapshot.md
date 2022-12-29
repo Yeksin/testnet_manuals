@@ -1,4 +1,4 @@
-# <img src="https://user-images.githubusercontent.com/110628975/205171502-6b467aee-e032-4c27-ae93-3bdcc63b6ef1.png" width="30" alt=""> Celestia-mocha Snapshot <img src="https://user-images.githubusercontent.com/110628975/200305287-749a5db9-d46c-4951-a1ec-cb2852d7af1d.png" width="30"/>
+# <img src="https://user-images.githubusercontent.com/110628975/209973850-513712ef-57dd-4328-8e1d-e0a2d8d4f136.png" width="30" alt=""> Celestia-mocha Snapshot <img src="https://user-images.githubusercontent.com/110628975/209973852-c4fc58fc-7a88-429b-97e9-47a693d6db9f.png" width="30"/>
 
 ## Check block height, snapshot time and file size from this <a href="https://snapshot.yeksin.net/celestia/current_state.txt" target="_blank">FILE </a>
 
