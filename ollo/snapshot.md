@@ -1,4 +1,4 @@
-# <img src="https://user-images.githubusercontent.com/110628975/207321763-bfed22b3-b58c-45b6-ae4f-6479a1114fad.png" width="30" alt=""> Ollo-testnet-1 Snapshot <img src="https://user-images.githubusercontent.com/110628975/200305287-749a5db9-d46c-4951-a1ec-cb2852d7af1d.png" width="30"/>
+# <img src="https://user-images.githubusercontent.com/110628975/209975508-6f6b55bc-82bb-4b4f-b36c-662efea41476.png" width="30" alt=""> Ollo-testnet-1 Snapshot <img src="https://user-images.githubusercontent.com/110628975/209973852-c4fc58fc-7a88-429b-97e9-47a693d6db9f.png" width="30"/>
 
 ## Check block height, snapshot time and file size from this <a href="https://snapshot.yeksin.net/ollo/current_state.txt" target="_blank">FILE </a>
 
