@@ -1,4 +1,4 @@
-# <img src="https://user-images.githubusercontent.com/110628975/204315172-754216f0-29ab-4dac-a482-c0c20d904f82.png" width="30" alt=""> Sge-testnet-1 State-Sync <img src="https://user-images.githubusercontent.com/110628975/200305287-749a5db9-d46c-4951-a1ec-cb2852d7af1d.png" width="30"/>
+# <img src="https://user-images.githubusercontent.com/110628975/209975880-b906168e-ad18-48ad-b1c8-c5a7ad8332ac.png" width="30" alt=""> Sge-testnet-1 State-Sync <img src="https://user-images.githubusercontent.com/110628975/209973852-c4fc58fc-7a88-429b-97e9-47a693d6db9f.png" width="30"/>
 
 ## State sync snapshots allow other nodes to rapidly join the network without replaying historical blocks, instead downloading and applying a snapshot of the application state at a given height.
 
