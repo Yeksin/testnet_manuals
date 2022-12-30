@@ -20,7 +20,7 @@ rm -rf $HOME/.humans/data
 ### Download snapshot
 
 ```
-wget https://snapshot.yeksin.net/humans/data.tar.gz && tar -xvf data.tar.gz -C $HOME/.humans
+curl -L https://snapshot.yeksin.net/humans/data.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.humans
 mv $HOME/.humans/priv_validator_state.json.backup $HOME/.humans/data/priv_validator_state.json
 ```
 
