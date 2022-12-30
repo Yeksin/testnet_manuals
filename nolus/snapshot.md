@@ -21,7 +21,7 @@ rm -rf $HOME/.nolus/data
 ### Download snapshot
 
 ```
-wget https://snapshot.yeksin.net/nolus/data.tar.gz && tar -xvf data.tar.gz -C $HOME/.nolus
+curl -L https://snapshot.yeksin.net/nolus/data.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.nolus
 mv $HOME/.nolus/priv_validator_state.json.backup $HOME/.nolus/data/priv_validator_state.json
 ```
 
