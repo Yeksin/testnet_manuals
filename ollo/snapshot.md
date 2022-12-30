@@ -2,7 +2,7 @@
 
 ## Check block height, snapshot time and file size from this <a href="https://snapshot.yeksin.net/ollo/current_state.txt" target="_blank">FILE </a>
 
-Snapshots are taken automatically each day at **19:00 UTC**
+Snapshots are taken automatically each day at **20:00 UTC**
 
 - **pruning**: custom/100/0/10 | **indexer**: null
 
@@ -20,7 +20,7 @@ rm -rf $HOME/.ollo/data
 ### Download snapshot
 
 ```
-wget https://snapshot.yeksin.net/ollo/data.tar.gz && tar -xvf data.tar.gz -C $HOME/.ollo
+curl -L https://snapshot.yeksin.net/ollo/data.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.ollo
 mv $HOME/.ollo/priv_validator_state.json.backup $HOME/.ollo/data/priv_validator_state.json
 ```
 
