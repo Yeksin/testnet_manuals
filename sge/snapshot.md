@@ -20,7 +20,7 @@ rm -rf $HOME/.sge/data
 ### Download snapshot
 
 ```
-wget https://snapshot.yeksin.net/sge/data.tar.gz && tar -xvf data.tar.gz -C $HOME/.sge
+curl -L https://snapshot.yeksin.net/sge/data.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.sge
 mv $HOME/.sge/priv_validator_state.json.backup $HOME/.sge/data/priv_validator_state.json
 ```
 
