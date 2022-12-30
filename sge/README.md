@@ -43,7 +43,7 @@ source $HOME/.bash_profile
 ```
 
 ## Check out our Snapshot and State-sync services to join the network faster.
-- ### <a href="https://github.com/yeksin/testnet_manuals/blob/main/sge/snapshot.md" target="_blank">Snapshot </a>(everyday 19:00 UTC)
+- ### <a href="https://github.com/yeksin/testnet_manuals/blob/main/sge/snapshot.md" target="_blank">Snapshot </a>(everyday 20:00 UTC)
 - ### <a href="https://github.com/yeksin/testnet_manuals/blob/main/sge/state-sync.md" target="_blank">State-Sync </a>
 
 ### Create wallet
