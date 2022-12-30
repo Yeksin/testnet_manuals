@@ -2,7 +2,7 @@
 
 ## Check block height, snapshot time and file size from this <a href="https://snapshot.yeksin.net/realio/current_state.txt" target="_blank">FILE </a>
 
-Snapshots are taken automatically each day at **21:00 UTC**
+Snapshots are taken automatically each day at **20:00 UTC**
 
 - **pruning**: custom/100/0/10 | **indexer**: null
 
@@ -20,7 +20,7 @@ rm -rf $HOME/.realio-network/data
 ### Download snapshot
 
 ```
-wget https://snapshot.yeksin.net/realio/data.tar.gz && tar -xvf data.tar.gz -C $HOME/.realio-network
+curl -L https://snapshot.yeksin.net/realio/data.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.realio-network
 mv $HOME/.realio-network/priv_validator_state.json.backup $HOME/.realio-network/data/priv_validator_state.json
 ```
 
