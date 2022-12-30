@@ -2,7 +2,7 @@
 
 ## Check block height, snapshot time and file size from this <a href="https://snapshot.yeksin.net/celestia/current_state.txt" target="_blank">FILE </a>
 
-Snapshots are taken automatically each day at **19:00 UTC**
+Snapshots are taken automatically each day at **20:00 UTC**
 
 - **pruning**: custom/100/0/10 | **indexer**: null
 
@@ -20,7 +20,7 @@ rm -rf $HOME/.celestia-app/data
 ### Download snapshot
 
 ```
-wget https://snapshot.yeksin.net/celestia/data.tar.gz && tar -xvf data.tar.gz -C $HOME/.celestia-app
+curl -L https://snapshot.yeksin.net/celestia/data.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.celestia-app
 mv $HOME/.celestia-app/priv_validator_state.json.backup $HOME/.celestia-app/data/priv_validator_state.json
 ```
 
