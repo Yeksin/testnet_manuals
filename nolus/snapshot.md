@@ -3,7 +3,7 @@
 
 ## Check block height, snapshot time and file size from this <a href="https://snapshot.yeksin.net/nolus/current_state.txt" target="_blank">FILE </a>
 
-Snapshots are taken automatically each day at **29:00 UTC**
+Snapshots are taken automatically each day at **20:00 UTC**
 
 - **pruning**: custom/100/0/10 | **indexer**: null
 
