@@ -27,7 +27,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-peers="e0aac09f3de68abf583b0e3994228ee8bd19d1eb@rpc.yeksin.net:44656"
+peers="398a13b3aff8d7608df7bb2fea73ad2939cbe623@rpc.yeksin.net:44656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$peers'"|' $HOME/.humans/config/config.toml
 
 sed -i -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
