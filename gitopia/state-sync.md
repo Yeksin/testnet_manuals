@@ -13,7 +13,6 @@
 sudo systemctl stop gitopiad
 cp $HOME/.gitopia/data/priv_validator_state.json $HOME/.gitopia/priv_validator_state.json.backup
 gitopiad tendermint unsafe-reset-all --home $HOME/.gitopia --keep-addr-book
-rm -rf $HOME/.gitopia/data
 ```
 
 ### Configure the state sync information
@@ -27,7 +26,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-peers="a510ea956fd1ccc786784d7c0f633889ce6cf618@rpc.yeksin.net:41656"
+peers="a510ea956fd1ccc786784d7c0f633889ce6cf618@gitopia.rpc.yeksin.net:41656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$peers'"|' $HOME/.gitopia/config/config.toml
 
 sed -i -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
