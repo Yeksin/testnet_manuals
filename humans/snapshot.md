@@ -14,7 +14,6 @@ Snapshots are taken automatically each day at **19:00 UTC**
 sudo systemctl stop humansd
 cp $HOME/.humans/data/priv_validator_state.json $HOME/.humans/priv_validator_state.json.backup
 humansd tendermint unsafe-reset-all --home $HOME/.humans --keep-addr-book
-rm -rf $HOME/.humans/data
 ```
 
 ### Download snapshot
