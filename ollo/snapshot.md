@@ -14,7 +14,6 @@ Snapshots are taken automatically each day at **20:00 UTC**
 sudo systemctl stop ollod
 cp $HOME/.ollo/data/priv_validator_state.json $HOME/.ollo/priv_validator_state.json.backup
 ollod tendermint unsafe-reset-all --home $HOME/.ollo --keep-addr-book
-rm -rf $HOME/.ollo/data
 ```
 
 ### Download snapshot
