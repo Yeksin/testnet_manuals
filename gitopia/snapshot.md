@@ -14,7 +14,6 @@ Snapshots are taken automatically each day at **20:00 UTC**
 sudo systemctl stop gitopiad
 cp $HOME/.gitopia/data/priv_validator_state.json $HOME/.gitopia/priv_validator_state.json.backup
 gitopiad tendermint unsafe-reset-all --home $HOME/.gitopia --keep-addr-book
-rm -rf $HOME/.gitopia/data
 ```
 
 ### Download snapshot
