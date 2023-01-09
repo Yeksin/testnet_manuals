@@ -15,7 +15,6 @@ Snapshots are taken automatically each day at **20:00 UTC**
 sudo systemctl stop nolusd
 cp $HOME/.nolus/data/priv_validator_state.json $HOME/.nolus/priv_validator_state.json.backup
 nolusd tendermint unsafe-reset-all --home $HOME/.nolus --keep-addr-book
-rm -rf $HOME/.nolus/data
 ```
 
 ### Download snapshot
