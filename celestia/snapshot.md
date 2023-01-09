@@ -14,7 +14,6 @@ Snapshots are taken automatically each day at **20:00 UTC**
 sudo systemctl stop celestia-appd
 cp $HOME/.celestia-app/data/priv_validator_state.json $HOME/.celestia-app/priv_validator_state.json.backup
 celestia-appd tendermint unsafe-reset-all --home $HOME/.celestia-app --keep-addr-book
-rm -rf $HOME/.celestia-app/data
 ```
 
 ### Download snapshot
