@@ -14,7 +14,6 @@ Snapshots are taken automatically each day at **20:00 UTC**
 sudo systemctl stop sged
 cp $HOME/.sge/data/priv_validator_state.json $HOME/.sge/priv_validator_state.json.backup
 sged tendermint unsafe-reset-all --home $HOME/.sge --keep-addr-book
-rm -rf $HOME/.sge/data
 ```
 
 ### Download snapshot
