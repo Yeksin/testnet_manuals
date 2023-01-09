@@ -13,7 +13,6 @@
 sudo systemctl stop celestia-appd
 cp $HOME/.celestia-app/data/priv_validator_state.json $HOME/.celestia-app/priv_validator_state.json.backup
 celestia-appd tendermint unsafe-reset-all --home $HOME/.celestia-app --keep-addr-book
-rm -rf $HOME/.celestia-app/data
 ```
 
 ### Configure the state sync information
@@ -27,7 +26,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-peers="021914827e4b117ef8c43386371e7a2f39f73654@rpc.yeksin.net:22656"
+peers="021914827e4b117ef8c43386371e7a2f39f73654@celestia.rpc.yeksin.net:22656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$peers'"|' $HOME/.celestia-app/config/config.toml
 
 sed -i -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
