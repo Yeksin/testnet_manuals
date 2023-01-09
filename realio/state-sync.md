@@ -13,7 +13,6 @@
 sudo systemctl stop realio-networkd
 cp $HOME/.realio-network/data/priv_validator_state.json $HOME/.realio-network/priv_validator_state.json.backup
 realio-networkd tendermint unsafe-reset-all --home $HOME/.realio-network --keep-addr-book
-rm -rf $HOME/.realio-network/data
 ```
 
 ### Configure the state sync information
@@ -27,7 +26,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-peers="c96e9c0711d73918c23a13194c03dd9874502fbe@rpc.yeksin.net:52656"
+peers="c96e9c0711d73918c23a13194c03dd9874502fbe@realio.rpc.yeksin.net:52656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$peers'"|' $HOME/.realio-network/config/config.toml
 
 sed -i -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
