@@ -13,7 +13,6 @@
 sudo systemctl stop ollod
 cp $HOME/.ollo/data/priv_validator_state.json $HOME/.ollo/priv_validator_state.json.backup
 ollod tendermint unsafe-reset-all --home $HOME/.ollo --keep-addr-book
-rm -rf $HOME/.ollo/data
 ```
 
 ### Configure the state sync information
@@ -27,7 +26,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-peers="93085f2731cabd480d9b61397d3e1cf84f5a023b@rpc.yeksin.net:32656"
+peers="93085f2731cabd480d9b61397d3e1cf84f5a023b@ollo.rpc.yeksin.net:32656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$peers'"|' $HOME/.ollo/config/config.toml
 
 sed -i -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
