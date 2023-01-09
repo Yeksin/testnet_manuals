@@ -14,7 +14,6 @@ Snapshots are taken automatically each day at **20:00 UTC**
 sudo systemctl stop realio-networkd
 cp $HOME/.realio-network/data/priv_validator_state.json $HOME/.realio-network/priv_validator_state.json.backup
 realio-networkd tendermint unsafe-reset-all --home $HOME/.realio-network --keep-addr-book
-rm -rf $HOME/.realio-network/data
 ```
 
 ### Download snapshot
