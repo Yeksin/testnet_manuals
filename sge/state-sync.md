@@ -13,7 +13,6 @@
 sudo systemctl stop sged
 cp $HOME/.sge/data/priv_validator_state.json $HOME/.sge/priv_validator_state.json.backup
 sged tendermint unsafe-reset-all --home $HOME/.sge --keep-addr-book
-rm -rf $HOME/.sge/data
 ```
 
 ### Configure the state sync information
@@ -27,7 +26,7 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-peers="54a8753f7db180701490e7b311286a57a36d7fbd@rpc.yeksin.net:51656"
+peers="54a8753f7db180701490e7b311286a57a36d7fbd@sge.rpc.yeksin.net:51656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$peers'"|' $HOME/.sge/config/config.toml
 
 sed -i -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
