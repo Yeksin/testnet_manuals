@@ -10,8 +10,17 @@
 
 # Lava node setup for lava-testnet-1
 
+Official documentation:
+- https://docs.lavanet.xyz/testnet
+
 Explorer:
->-  https://explorers.yeksin.net/lava-testnet
+- https://explorers.yeksin.net/lava-testnet
+
+API:
+- https://lava.api.yeksin.net
+
+RPC:
+- https://lava.rpc.yeksin.net
 
 ## Hardware Requirements
 Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
