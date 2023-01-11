@@ -57,7 +57,7 @@ fi
 ```
 cd $HOME && rm -rf lava
 git clone https://github.com/lavanet/lava.git && cd lava
-git checkout v0.4.0
+git checkout v0.4.3
 make install
 ```
 
