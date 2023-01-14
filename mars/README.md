@@ -13,6 +13,9 @@
 Official documentation:
 - https://validatordocs.marsprotocol.io/TfYZfjcaUzFmiAkWDf7P/develop/mars-cli/marsd
 
+Yeksin Services for Mars Protocol: (Snapshots, State-Sync, Addrbook File, Live Peers and Cheatsheet)
+- https://www.yeksin.net/mars
+
 Explorer:
 - https://explorers.yeksin.net/mars-testnet
 
@@ -21,7 +24,6 @@ API:
 
 RPC:
 - https://mars.rpc.yeksin.net
-
 
 ## Hardware Requirements
 Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
@@ -39,24 +41,156 @@ Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
  - Permanent Internet connection (traffic will be minimal during testnet; 10Mbps will be plenty - for production at least 100Mbps is expected)
 
 ## Set up your mars node
-### Option 1 (manual)
-You can follow [manual guide](https://github.com/yeksin/testnet_manuals/blob/main/mars/manual_install.md) if you better prefer setting up node manually
 
-
-### Option 2 (automatic)
+# Automatic Installation
 You can setup your mars fullnode in few minutes by using automated script below. It will prompt you to input your validator node name!
 ```
 wget -O mars.sh https://raw.githubusercontent.com/yeksin/testnet_manuals/main/mars/mars.sh && chmod +x mars.sh && ./mars.sh
+
 ```
 
 When installation is finished please load variables into system
 ```
 source $HOME/.bash_profile
+
 ```
 
-## Check out our Snapshot and State-sync services to join the network faster.
-- ### <a href="https://github.com/yeksin/testnet_manuals/blob/main/mars/snapshot.md" target="_blank">Snapshot </a>(everyday 21:00 UTC)
-- ### <a href="https://github.com/yeksin/testnet_manuals/blob/main/mars/state-sync.md" target="_blank">State-Sync </a>
+# Manual Installation
+If you want to setup fullnode manually follow the steps below
+
+## Setting up vars
+Here you have to put name of your moniker (validator) that will be visible in explorer
+```
+NODENAME=<YOUR_MONIKER_NAME_GOES_HERE>
+```
+
+## Update packages
+```
+sudo apt update && sudo apt upgrade -y
+
+```
+
+## Install dependencies
+```
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y curl build-essential git wget jq make gcc tmux chrony lz4 unzip
+
+```
+
+## Install go
+```
+sudo rm -rvf /usr/local/go/
+wget https://golang.org/dl/go1.19.3.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.19.3.linux-amd64.tar.gz
+rm go1.19.3.linux-amd64.tar.gz
+
+echo 'export GOROOT=/usr/local/go' >> $HOME/.bash_profile
+echo 'export GOPATH=$HOME/go' >> $HOME/.bash_profile
+echo 'export GO111MODULE=on' >> $HOME/.bash_profile
+echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> $HOME/.bash_profile && . $HOME/.bash_profile
+
+```
+
+## Download and build binaries
+```
+cd $HOME && rm -rf hub
+git clone https://github.com/mars-protocol/hub.git && cd hub
+git checkout v1.0.0-rc7
+make install
+
+```
+
+## Create service
+```
+sudo tee /etc/systemd/system/marsd.service > /dev/null <<EOF
+[Unit]
+Description=Mars Network Node
+After=network.target
+[Service]
+Type=simple
+User=$USER
+ExecStart=$(which marsd) start
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=65535
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo systemctl daemon-reload
+sudo systemctl enable marsd
+
+```
+
+## Config app
+```
+MARS_PORT=58
+echo "export MARS_CHAIN_ID=ares-1" >> $HOME/.bash_profile
+echo "export MARS_PORT=${MARS_PORT}" >> $HOME/.bash_profile
+source $HOME/.bash_profile
+
+marsd config chain-id $MARS_CHAIN_ID
+marsd config keyring-backend test
+marsd config node tcp://localhost:${MARS_PORT}657
+marsd init $NODENAME --chain-id $MARS_CHAIN_ID
+
+```
+
+## Download genesis and Addrbook (updates every: 1h)
+```
+wget https://snapshot.yeksin.net/mars/genesis.json -O $HOME/.mars/config/genesis.json
+wget https://snapshot.yeksin.net/mars/addrbook.json -O $HOME/.mars/config/addrbook.json
+
+```
+
+## Set seeds and peers
+```
+SEEDS=""
+PEERS="b60d9649dd154c169dcf08f47af7c1528c159818@104.248.41.168:26656"
+sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.mars/config/config.toml
+
+```
+
+## Config pruning, set minimum gas price, enable prometheus and reset chain data
+```
+pruning="custom"
+pruning_keep_recent="100"
+pruning_keep_every="0"
+pruning_interval="10"
+sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" $HOME/.mars/config/app.toml
+sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" $HOME/.mars/config/app.toml
+sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.mars/config/app.toml
+sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.mars/config/app.toml
+
+sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0umars\"/" $HOME/.mars/config/app.toml
+sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.mars/config/config.toml
+
+```
+
+## Set custom ports
+```
+sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${MARS_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${MARS_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${MARS_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${MARS_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${MARS_PORT}660\"%" $HOME/.mars/config/config.toml
+sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${MARS_PORT}317\"%; s%^address = \":8080\"%address = \":${MARS_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${MARS_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${MARS_PORT}091\"%; s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:${MARS_PORT}545\"%; s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:${MARS_PORT}546\"%" $HOME/.mars/config/app.toml
+
+```
+
+## Download Snapshot
+```
+curl -L https://snapshot.yeksin.net/mars/data.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.mars
+
+```
+
+## Start service
+```
+sudo systemctl start marsd
+
+```
+
+## Check logs
+```
+sudo journalctl -u marsd -f -o cat
+
+```
 
 ### Create wallet
 To create new wallet you can use command below. Don’t forget to save the mnemonic
@@ -84,7 +218,7 @@ echo 'export MARS_VALOPER_ADDRESS='${MARS_VALOPER_ADDRESS} >> $HOME/.bash_profil
 source $HOME/.bash_profile
 ```
 
-### Create validator
+# Create validator
 Before creating validator please make sure that you have at least 1 tlore (1 tlore is equal to 1000000 umars) and your node is synchronized
 
 To check your wallet balance:
@@ -108,135 +242,6 @@ marsd tx staking create-validator \
   -y
 ```
 
-## Get currently connected peer list with ids
-```
-curl -sS http://localhost:${MARS_PORT}657/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}'
-```
+# Check Cheatsheet
+- https://www.yeksin.net/mars/cheatsheet
 
-## Usefull commands
-### Service management
-Check logs
-```
-journalctl -fu marsd -o cat
-```
-
-Start service
-```
-sudo systemctl start marsd
-```
-
-Stop service
-```
-sudo systemctl stop marsd
-```
-
-Restart service
-```
-sudo systemctl restart marsd
-```
-
-### Node info
-Synchronization info
-```
-marsd status 2>&1 | jq .SyncInfo
-```
-
-Validator info
-```
-marsd status 2>&1 | jq .ValidatorInfo
-```
-
-Node info
-```
-marsd status 2>&1 | jq .NodeInfo
-```
-
-Show node id
-```
-marsd tendermint show-node-id
-```
-
-### Wallet operations
-List of wallets
-```
-marsd keys list
-```
-
-Recover wallet
-```
-marsd keys add $WALLET --recover
-```
-
-Delete wallet
-```
-marsd keys delete $WALLET
-```
-
-Get wallet balance
-```
-marsd query bank balances $MARS_WALLET_ADDRESS
-```
-
-Transfer funds
-```
-marsd tx bank send $MARS_WALLET_ADDRESS <TO_MARS_WALLET_ADDRESS> 1000000umars
-```
-
-### Voting
-```
-marsd tx gov vote 1 yes --from $WALLET --chain-id=$MARS_CHAIN_ID
-```
-
-### Staking, Delegation and Rewards
-Delegate stake
-```
-marsd tx staking delegate $MARS_VALOPER_ADDRESS 1000000umars --from=$WALLET --chain-id=$MARS_CHAIN_ID --gas=auto
-```
-
-Redelegate stake from validator to another validator
-```
-marsd tx staking redelegate <srcValidatorAddress> <destValidatorAddress> 1000000umars --from=$WALLET --chain-id=$MARS_CHAIN_ID --gas=auto
-```
-
-Withdraw all rewards
-```
-marsd tx distribution withdraw-all-rewards --from=$WALLET --chain-id=$MARS_CHAIN_ID --gas=auto
-```
-
-Withdraw rewards with commision
-```
-marsd tx distribution withdraw-rewards $MARS_VALOPER_ADDRESS --from=$WALLET --commission --chain-id=$MARS_CHAIN_ID
-```
-
-### Validator management
-Edit validator
-```
-marsd tx staking edit-validator \
-  --moniker=$NODENAME \
-  --identity=<your_keybase_id> \
-  --website="<your_website>" \
-  --details="<your_validator_description>" \
-  --chain-id=$MARS_CHAIN_ID \
-  --from=$WALLET
-```
-
-Unjail validator
-```
-marsd tx slashing unjail \
-  --broadcast-mode=block \
-  --from=$WALLET \
-  --chain-id=$MARS_CHAIN_ID \
-  --gas=auto
-```
-
-### Delete node
-This commands will completely remove node from server. Use at your own risk!
-```
-sudo systemctl stop marsd
-sudo systemctl disable marsd
-sudo rm /etc/systemd/system/mars* -rf
-sudo rm $(which marsd) -rf
-sudo rm $HOME/.mars* -rf
-sudo rm $HOME/hub -rf
-sed -i '/MARS_/d' ~/.bash_profile
-```
