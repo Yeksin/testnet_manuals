@@ -12,7 +12,7 @@
 
 ### Yeksin Services for Mars Protocol: (Snapshots, State-Sync, Addrbook File, Live Peers and Cheatsheet)
 - https://www.yeksin.net/mars
-- 
+
 Official documentation:
 - https://validatordocs.marsprotocol.io/TfYZfjcaUzFmiAkWDf7P/develop/mars-cli/marsd
 
