@@ -62,7 +62,7 @@ echo -e "\e[1m\e[32m3. Downloading and building binaries... \e[0m" && sleep 1
 # download and build binaries
 cd $HOME && rm -rf lava
 git clone https://github.com/lavanet/lava.git && cd lava
-git checkout v0.4.3
+git checkout v0.4.4
 make install
 
 # config
