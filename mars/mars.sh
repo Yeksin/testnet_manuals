@@ -56,17 +56,16 @@ fi
 
 echo -e "\e[1m\e[32m3. Downloading and building binaries... \e[0m" && sleep 1
 # download and build binaries
-cd $HOME && rm -rf lava
-git clone https://github.com/lavanet/lava.git && cd lava
-git checkout v1.0.0-rc7
+cd $HOME && rm -rf hub
+git clone https://github.com/mars-protocol/hub.git && cd hub
+git checkout v1.0.0
 make install
+
 
 # config
 marsd config chain-id $MARS_CHAIN_ID
 marsd config keyring-backend test
 marsd config node tcp://localhost:${MARS_PORT}657
-
-# init
 marsd init $NODENAME --chain-id $MARS_CHAIN_ID
 
 # download genesis
@@ -107,23 +106,24 @@ echo -e "\e[1m\e[32m4. Starting service... \e[0m" && sleep 1
 # create service
 sudo tee /etc/systemd/system/marsd.service > /dev/null <<EOF
 [Unit]
-Description=Mars Network Node
+Description=Mars Network node
 After=network.target
 [Service]
 Type=simple
 User=$USER
 ExecStart=$(which marsd) start
 Restart=on-failure
-RestartSec=5s
+RestartSec=10
 LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target
 EOF
 
-# start service
 sudo systemctl daemon-reload
 sudo systemctl enable marsd
-sudo systemctl restart marsd
+
+# start service
+sudo systemctl start marsd
 
 echo '=============== SETUP FINISHED ==================='
 echo -e 'To check logs: \e[1m\e[32mjournalctl -u marsd -f -o cat\e[0m'
