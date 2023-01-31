@@ -145,8 +145,8 @@ wget https://snapshot.yeksin.net/mars/addrbook.json -O $HOME/.mars/config/addrbo
 
 ## Set seeds and peers
 ```
-SEEDS=""
-PEERS="b60d9649dd154c169dcf08f47af7c1528c159818@104.248.41.168:26656"
+SEEDS="52de8a7e2ad3da459961f633e50f64bf597c7585@seed.marsprotocol.io:443,d2d2629c8c8a8815f85c58c90f80b94690468c4f@tenderseed.ccvalidators.com:26012,ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@seeds.polkachu.com:18556"
+PEERS="d2a2c21754be65ad4a4f1de1f6163f681a6e8af8@192.99.44.79:18556,2a66b2b518d908c91b734ac6bad07ae68e1553ba@141.94.171.61:26656"
 sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.mars/config/config.toml
 
 ```
