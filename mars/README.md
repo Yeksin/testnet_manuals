@@ -8,7 +8,7 @@
   <img height="100" height="auto" src="https://user-images.githubusercontent.com/110628975/212442135-e36db0d3-a46a-4fe0-b502-55950ccdfc3e.png">
 </p>
 
-# Mars node setup for ares-1
+# Mars node setup for mars-1
 
 ### Yeksin Services for Mars Protocol: (Snapshots, State-Sync, Addrbook File, Live Peers and Cheatsheet)
 - https://www.yeksin.net/mars
@@ -17,7 +17,7 @@ Official documentation:
 - https://validatordocs.marsprotocol.io/TfYZfjcaUzFmiAkWDf7P/develop/mars-cli/marsd
 
 Explorer:
-- https://explorers.yeksin.net/mars-testnet
+- https://explorers.yeksin.net/mars
 
 API:
 - https://mars.api.yeksin.net
@@ -95,7 +95,7 @@ echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> $HOME/.bash_profile &
 ```
 cd $HOME && rm -rf hub
 git clone https://github.com/mars-protocol/hub.git && cd hub
-git checkout v1.0.0-rc7
+git checkout v1.0.0
 make install
 
 ```
@@ -125,7 +125,7 @@ sudo systemctl enable marsd
 ## Config app
 ```
 MARS_PORT=58
-echo "export MARS_CHAIN_ID=ares-1" >> $HOME/.bash_profile
+echo "export MARS_CHAIN_ID=mars-1" >> $HOME/.bash_profile
 echo "export MARS_PORT=${MARS_PORT}" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 
@@ -238,7 +238,7 @@ marsd tx staking create-validator \
   --min-self-delegation 1 \
   --moniker $NODENAME \
   --pubkey $(marsd tendermint show-validator) \
-  --chain-id ares-1 \
+  --chain-id mars-1 \
   -y
 ```
 
