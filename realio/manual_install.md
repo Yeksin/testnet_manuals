@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img height="100" height="auto" src="https://user-images.githubusercontent.com/110628975/209976146-cf2d8cbc-475e-4780-8a28-027e74cf6d9a.png">
+  <img height="100" height="auto" src="https://user-images.githubusercontent.com/110628975/217305126-5a62b627-b5f7-4c55-b49b-58e9f098bb30.png">
 </p>
 
 # Manual node setup
