@@ -84,8 +84,8 @@ althea config node tcp://localhost:${ALTHEA_PORT}657
 althea init $NODENAME --chain-id $ALTHEA_CHAIN_ID
 
 # download genesis & addrbook
-wget https://snapshot.yeksin.net/babylon/genesis.json -O $HOME/.althea/config/genesis.json
-wget https://snapshot.yeksin.net/babylon/addrbook.json -O $HOME/.althea/config/addrbook.json
+wget https://snapshot.yeksin.net/althea/genesis.json -O $HOME/.althea/config/genesis.json
+wget https://snapshot.yeksin.net/althea/addrbook.json -O $HOME/.althea/config/addrbook.json
 
 # set peers and seeds
 SEEDS=""
