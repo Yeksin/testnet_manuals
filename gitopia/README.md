@@ -32,24 +32,7 @@ Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
  - Permanent Internet connection (traffic will be minimal during testnet; 10Mbps will be plenty - for production at least 100Mbps is expected)
 
 ## Set up your gitopia fullnode
-### Option 1 (manual)
 You can follow [manual guide](https://github.com/yeksin/testnet_manuals/blob/main/gitopia/manual_install.md) if you better prefer setting up node manually
-
-
-### Option 2 (automatic)
-You can setup your gitopia fullnode in few minutes by using automated script below. It will prompt you to input your validator node name!
-```
-wget -O gitopia.sh https://raw.githubusercontent.com/yeksin/testnet_manuals/main/gitopia/gitopia.sh && chmod +x gitopia.sh && ./gitopia.sh
-```
-
-When installation is finished please load variables into system
-```
-source $HOME/.bash_profile
-```
-
-## Check out our Snapshot and State-sync services to join the network faster.
-- ### <a href="https://github.com/yeksin/testnet_manuals/blob/main/gitopia/snapshot.md" target="_blank">Snapshot </a>(everyday 20:00 UTC)
-- ### <a href="https://github.com/yeksin/testnet_manuals/blob/main/gitopia/state-sync.md" target="_blank">State-Sync </a>
 
 ### Create wallet
 To create new wallet you can use command below. Don’t forget to save the mnemonic
