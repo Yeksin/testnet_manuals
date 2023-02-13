@@ -29,23 +29,7 @@ RPC:
 - Bandwidth: 1 Gbps for Download/100 Mbps for Upload
 
 ## Set up your celestia fullnode
-### Option 1 (manual)
 You can follow [manual guide](https://github.com/yeksin/testnet_manuals/blob/main/celestia/manual_install.md) if you better prefer setting up node manually
-
-### Option 2 (automatic)
-You can setup your celestia fullnode in few minutes by using automated script below. It will prompt you to input your validator node name!
-```
-wget -O celestia.sh https://raw.githubusercontent.com/yeksin/testnet_manuals/main/celestia/celestia.sh && chmod +x celestia.sh && ./celestia.sh
-```
-
-When installation is finished please load variables into system
-```
-source $HOME/.bash_profile
-```
-
-## Check out our Snapshot and State-sync services to join the network faster.
-- ### <a href="https://github.com/yeksin/testnet_manuals/blob/main/celestia/snapshot.md" target="_blank">Snapshot </a>(everyday 20:00 UTC)
-- ### <a href="https://github.com/yeksin/testnet_manuals/blob/main/celestia/state-sync.md" target="_blank">State-Sync </a>
 
 ### Create wallet
 To create new wallet you can use command below. Don’t forget to save the mnemonic
