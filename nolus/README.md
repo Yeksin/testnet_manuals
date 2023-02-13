@@ -43,10 +43,6 @@ Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
 ## Set up your nolus fullnode
 You can follow [manual guide](https://github.com/yeksin/testnet_manuals/blob/main/nolus/manual_install.md) if you better prefer setting up node manually
 
-## Check out our Snapshot and State-sync services to join the network faster.
-- ### <a href="https://github.com/yeksin/testnet_manuals/blob/main/nolus/snapshot.md" target="_blank">Snapshot </a>(everyday 20:00 UTC)
-- ### <a href="https://github.com/yeksin/testnet_manuals/blob/main/nolus/state-sync.md" target="_blank">State-Sync </a>
-
 ### Create wallet
 To create new wallet you can use command below. Don’t forget to save the mnemonic
 ```
