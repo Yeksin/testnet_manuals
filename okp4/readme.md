@@ -29,18 +29,8 @@ Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
  - Permanent Internet connection (traffic will be minimal during testnet; 10Mbps will be plenty - for production at least 100Mbps is expected)
 
 ## Set up your okp4 fullnode
-### Option 1 (manual)
 You can follow [manual guide](https://github.com/yeksinNodes/testnet_manuals/blob/main/okp4/manual_install.md) if you better prefer setting up node manually
 
-### Option 2 (automatic)
-You can setup your okp4 fullnode in few minutes by using automated script below. It will prompt you to input your validator node name!
-```
-wget -O okp4.sh https://raw.githubusercontent.com/yeksinNodes/testnet_manuals/main/okp4/okp4.sh && chmod +x okp4.sh && ./okp4.sh
-```
-Wait for the installation to complete. After that execute the following command:
-```
-source $HOME/.bash_profile
-```
 
 ### Create wallet
 To create new wallet you can use command below. Don’t forget to save the mnemonic
