@@ -38,24 +38,7 @@ Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
  - Permanent Internet connection (traffic will be minimal during testnet; 10Mbps will be plenty - for production at least 100Mbps is expected)
 
 ## Set up your lava node
-### Option 1 (manual)
 You can follow [manual guide](https://github.com/yeksin/testnet_manuals/blob/main/lava/manual_install.md) if you better prefer setting up node manually
-
-
-### Option 2 (automatic)
-You can setup your lava fullnode in few minutes by using automated script below. It will prompt you to input your validator node name!
-```
-wget -O lava.sh https://raw.githubusercontent.com/yeksin/testnet_manuals/main/lava/lava.sh && chmod +x lava.sh && ./lava.sh
-```
-
-When installation is finished please load variables into system
-```
-source $HOME/.bash_profile
-```
-
-## Check out our Snapshot and State-sync services to join the network faster.
-- ### <a href="https://github.com/yeksin/testnet_manuals/blob/main/lava/snapshot.md" target="_blank">Snapshot </a>(everyday 20:00 UTC)
-- ### <a href="https://github.com/yeksin/testnet_manuals/blob/main/lava/state-sync.md" target="_blank">State-Sync </a>
 
 ### Create wallet
 To create new wallet you can use command below. Don’t forget to save the mnemonic
