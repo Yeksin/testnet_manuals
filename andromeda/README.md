@@ -41,7 +41,7 @@ Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
  - Permanent Internet connection (traffic will be minimal during testnet; 10Mbps will be plenty - for production at least 100Mbps is expected)
 
 
-#Installation
+# Installation
 If you want to setup fullnode manually follow the steps below
 
 ## Setting up vars
