@@ -32,34 +32,7 @@ Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
  - Permanent Internet connection (traffic will be minimal during testnet; 10Mbps will be plenty - for production at least 100Mbps is expected)
 
 ## Set up your quicksilver node
-### Option 1 (manual)
 You can follow [manual guide](https://github.com/yeksinNodes/testnet_manuals/blob/main/quicksilver/manual_install.md) if you better prefer setting up node manually
-
-### Option 2 (automatic)
-You can setup your quicksilver node in few minutes by using automated script below. It will prompt you to input your validator node name!
-```
-wget -O quicksilver.sh https://raw.githubusercontent.com/yeksinNodes/testnet_manuals/main/quicksilver/quicksilver.sh && chmod +x quicksilver.sh && ./quicksilver.sh
-```
-
-When installation is finished please load variables into system
-```
-source $HOME/.bash_profile
-```
-### (Optional) Snapshot by kjnodes 
-```
-sudo systemctl stop quicksilverd
-cp $HOME/.quicksilverd/data/priv_validator_state.json $HOME/.quicksilverd/priv_validator_state.json.backup
-rm -rf $HOME/.quicksilverd/data
-```
-
-```
-curl -L https://snapshots.kjnodes.com/quicksilver/snapshot_latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.quicksilverd
-mv $HOME/.quicksilverd/priv_validator_state.json.backup $HOME/.quicksilverd/data/priv_validator_state.json
-```
-
-```
-sudo systemctl start quicksilverd && journalctl -u quicksilverd -f --no-hostname -o cat
-```
 
 ### Create wallet
 To create new wallet you can use command below. Don’t forget to save the mnemonic
