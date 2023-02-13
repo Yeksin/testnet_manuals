@@ -29,20 +29,7 @@ Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
  - Permanent Internet connection (traffic will be minimal during testnet; 10Mbps will be plenty - for production at least 100Mbps is expected)
 
 ## Set up your loyal fullnode
-
-### Option 1 (manual)
 You can follow [manual guide](https://github.com/yeksinNodes/testnet_manuals/blob/main/loyal/manual_install.md) if you better prefer setting up node manually
-
-### Option 2 (automatic)
-You can setup your loyal fullnode in few minutes by using automated script below. It will prompt you to input your validator node name!
-```
-wget -O loyal.sh https://raw.githubusercontent.com/yeksinNodes/testnet_manuals/main/loyal/loyal.sh && chmod +x loyal.sh && ./loyal.sh
-```
-
-When installation is finished please load variables into system
-```
-source $HOME/.bash_profile
-```
 
 ### Create wallet
 To create new wallet you can use command below. Don’t forget to save the mnemonic
