@@ -37,23 +37,8 @@
   - 1TB of storage (SSD or NVME)
   - Permanent Internet connection (traffic will be minimal during testnet; 10Mbps will be plenty - for production at least 100Mbps is expected)
 
-  ## Set up your althea node
 
-  # Automatic Installation
-  You can setup your althea fullnode in few minutes by using automated script below. It will prompt you to input your validator node name!
-  ```
-  wget -O althea.sh https://raw.githubusercontent.com/yeksin/testnet_manuals/main/althea/althea.sh && chmod +x althea.sh && ./althea.sh
-
-  ```
-
-  When installation is finished please load variables into system
-  ```
-  source $HOME/.bash_profile
-
-  ```
-
-  # Manual Installation
-  If you want to setup fullnode manually follow the steps below
+  # Installation
 
   ## Setting up vars
   Here you have to put name of your moniker (validator) that will be visible in explorer
