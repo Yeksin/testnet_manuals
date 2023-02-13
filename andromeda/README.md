@@ -42,7 +42,6 @@ Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
 
 
 # Installation
-If you want to setup fullnode manually follow the steps below
 
 ## Setting up vars
 Here you have to put name of your moniker (validator) that will be visible in explorer
