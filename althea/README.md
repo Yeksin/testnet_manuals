@@ -202,7 +202,7 @@ make install
   ```
 
   # Create validator
-  Before creating validator please make sure that you have at least 1 tlore (1 tlore is equal to 1000000 ualthea) and your node is synchronized
+  Before creating validator please make sure that you have at least 1 tlore (1 althea is equal to 1000000 ualthea) and your node is synchronized
 
   To check your wallet balance:
   ```
