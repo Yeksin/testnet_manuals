@@ -196,7 +196,7 @@ source $HOME/.bash_profile
 ```
 
 # Create validator
-Before creating validator please make sure that you have at least 1 tlore (1 tlore is equal to 1000000 uebl) and your node is synchronized
+Before creating validator please make sure that you have at least 1 ebl (1 ebl is equal to 1000000 uebl) and your node is synchronized
 
 To check your wallet balance:
 ```
