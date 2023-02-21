@@ -1,26 +1,35 @@
 <p style="font-size:14px" align="right">
-<a href="https://t.me/yekssin" target="_blank">Telegram <img src="https://user-images.githubusercontent.com/110628975/200304455-120e6b06-2785-4c4f-8fc7-e9ef39dd653e.png" width="30"/></a>
-<a href="https://discordapp.com/users/418099630765637642" target="_blank">Discord <img src="https://user-images.githubusercontent.com/110628975/200304348-3539ebf8-e4f7-4b73-a259-35d06c41441e.png" width="30"/></a>
-<a href="https://yeksin.net/" target="_blank">Website <img src="https://user-images.githubusercontent.com/110628975/200305287-749a5db9-d46c-4951-a1ec-cb2852d7af1d.png" width="30"/></a>
+<a href="https://t.me/yekssin" target="_blank">Telegram <img src="https://user-images.githubusercontent.com/110628975/209973847-b0af2837-c6cc-4468-94dc-1282dedccf8b.png" width="30"/></a>
+<a href="https://discordapp.com/users/418099630765637642" target="_blank">Discord <img src="https://user-images.githubusercontent.com/110628975/209973851-bbd41a58-84bd-42ef-a936-01782db1fec5.png" width="30"/></a>
+<a href="https://yeksin.net/" target="_blank">Website <img src="https://user-images.githubusercontent.com/110628975/209973852-c4fc58fc-7a88-429b-97e9-47a693d6db9f.png" width="30"/></a>
 </p>
 
 <p align="center">
-  <img height="100" height="auto" src="https://user-images.githubusercontent.com/110628975/200358773-5fd56781-edd0-4c76-964a-f5dc595b4254.png">
+  <img height="100" height="auto" src="https://user-images.githubusercontent.com/110628975/220418605-7a3184ad-9599-4bb3-9a16-b0ca6512bda6.png">
 </p>
 
-# nibiru node setup for testnet — nibiru-testnet-1
+# Nibiru node setup for nibiru-testnet-2
+
+### Yeksin Services for Nibiru Protocol: (Snapshots, State-Sync, Addrbook File, Live Peers and Cheatsheet)
+- https://www.yeksin.net/nibiru
 
 Official documentation:
->- [Validator setup instructions](https://docs.nibiru.fi/run-nodes/testnet/)
+- https://nibiru.fi/docs
 
 Explorer:
->-  https://explorers.yeksin.net/nibiru-testnet
+- https://explorers.yeksin.net/nibiru-testnet
+
+API:
+- https://nibiru.api.yeksin.net
+
+RPC:
+- https://nibiru.rpc.yeksin.net
 
 ## Hardware Requirements
 Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
 
 ### Minimum Hardware Requirements
- - 4x CPUs; the faster clock speed the better
+- 4x CPUs; the faster clock speed the better
  - 8GB RAM
  - 100GB of storage (SSD or NVME)
  - Permanent Internet connection (traffic will be minimal during testnet; 10Mbps will be plenty - for production at least 100Mbps is expected)
@@ -31,50 +40,141 @@ Like any Cosmos-SDK chain, the hardware requirements are pretty modest.
  - 1TB of storage (SSD or NVME)
  - Permanent Internet connection (traffic will be minimal during testnet; 10Mbps will be plenty - for production at least 100Mbps is expected)
 
-## Set up your nibiru fullnode
-You can follow [manual guide](https://github.com/yeksinNodes/testnet_manuals/blob/main/nibiru/manual_install.md) if you better prefer setting up node manually
+#  Installation
 
-### State-Sync with Nodejumper.io
-
-You can state sync your node in minutes by running commands below
+## Setting up vars
+Here you have to put name of your moniker (validator) that will be visible in explorer
 ```
-sudo systemctl stop nibid
-
-cp $HOME/.nibid/data/priv_validator_state.json $HOME/.nibid/priv_validator_state.json.backup
-nibid tendermint unsafe-reset-all --home $HOME/.nibid --keep-addr-book
-
-SNAP_RPC="https://nibiru-testnet.nodejumper.io:443"
-
-LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
-BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
-TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
-
-echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
-
-peers="b32bb87364a52df3efcbe9eacc178c96b35c823a@nibiru-testnet.nodejumper.io:27656"
-sed -i 's|^persistent_peers *=.*|persistent_peers = "'$peers'"|' $HOME/.nibid/config/config.toml
-
-sed -i -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
-s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
-s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
-s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.nibid/config/config.toml
-
-mv $HOME/.nibid/priv_validator_state.json.backup $HOME/.nibid/data/priv_validator_state.json
-
-sudo systemctl restart nibid
+NODENAME=<YOUR_MONIKER_NAME_GOES_HERE>
 ```
 
-### Update block time parameters
+## Update packages
 ```
-CONFIG_TOML="$HOME/.nibid/config/config.toml"
-sed -i 's/timeout_propose =.*/timeout_propose = "100ms"/g' $CONFIG_TOML
-sed -i 's/timeout_propose_delta =.*/timeout_propose_delta = "500ms"/g' $CONFIG_TOML
-sed -i 's/timeout_prevote =.*/timeout_prevote = "100ms"/g' $CONFIG_TOML
-sed -i 's/timeout_prevote_delta =.*/timeout_prevote_delta = "500ms"/g' $CONFIG_TOML
-sed -i 's/timeout_precommit =.*/timeout_precommit = "100ms"/g' $CONFIG_TOML
-sed -i 's/timeout_precommit_delta =.*/timeout_precommit_delta = "500ms"/g' $CONFIG_TOML
-sed -i 's/timeout_commit =.*/timeout_commit = "1s"/g' $CONFIG_TOML
-sed -i 's/skip_timeout_commit =.*/skip_timeout_commit = false/g' $CONFIG_TOML
+sudo apt update && sudo apt upgrade -y
+
+```
+
+## Install dependencies
+```
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y curl build-essential git wget jq make gcc tmux chrony lz4 unzip
+
+```
+
+## Install go
+```
+sudo rm -rvf /usr/local/go/
+wget https://golang.org/dl/go1.19.3.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.19.3.linux-amd64.tar.gz
+rm go1.19.3.linux-amd64.tar.gz
+
+echo 'export GOROOT=/usr/local/go' >> $HOME/.bash_profile
+echo 'export GOPATH=$HOME/go' >> $HOME/.bash_profile
+echo 'export GO111MODULE=on' >> $HOME/.bash_profile
+echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> $HOME/.bash_profile && . $HOME/.bash_profile
+
+```
+
+## Download and build binaries
+```
+cd $HOME && rm -rf nibiru
+git clone https://github.com/NibiruChain/nibiru
+cd nibiru 
+git checkout v0.16.3
+make install
+
+```
+
+## Create service
+```
+sudo tee /etc/systemd/system/nibid.service > /dev/null <<EOF
+[Unit]
+Description= Nibiru Network Node
+After=network-online.target
+
+[Service]
+User=$USER
+ExecStart=$(which nibid) start
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo systemctl daemon-reload
+sudo systemctl enable nibid
+
+```
+
+## Config app
+```
+NIBIRU_PORT=41
+echo "export NIBIRU_CHAIN_ID=nibiru-testnet-2" >> $HOME/.bash_profile
+echo "export NIBIRU_PORT=${NIBIRU_PORT}" >> $HOME/.bash_profile
+source $HOME/.bash_profile
+
+nibid config chain-id $NIBIRU_CHAIN_ID
+nibid config keyring-backend test
+nibid config node tcp://localhost:${NIBIRU_PORT}657
+nibid init $NODENAME --chain-id $NIBIRU_CHAIN_ID
+
+```
+
+## Download genesis and Addrbook (updates every: 1h)
+```
+wget https://snapshot.yeksin.net/nibiru/genesis.json -O $HOME/.nibid/config/genesis.json
+wget https://snapshot.yeksin.net/nibiru/addrbook.json -O $HOME/.nibid/config/addrbook.json
+
+```
+
+## Set seeds and peers
+```
+SEEDS="dabcc13d6274f4dd86fd757c5c4a632f5062f817@seed-2.nibiru-testnet-2.nibiru.fi:26656,a5383b33a6086083a179f6de3c51434c5d81c69d@seed-1.nibiru-testnet-2.nibiru.fi:26656"
+PEERS=""
+sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.nibid/config/config.toml
+
+```
+
+## Config pruning, set minimum gas price, enable prometheus and reset chain data
+```
+pruning="custom"
+pruning_keep_recent="100"
+pruning_keep_every="0"
+pruning_interval="10"
+sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" $HOME/.nibid/config/app.toml
+sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" $HOME/.nibid/config/app.toml
+sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.nibid/config/app.toml
+sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.nibid/config/app.toml
+
+sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0unibi\"/" $HOME/.nibid/config/app.toml
+
+```
+
+## Set custom ports
+```
+sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${NIBIRU_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${NIBIRU_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${NIBIRU_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${NIBIRU_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${NIBIRU_PORT}660\"%" $HOME/.nibid/config/config.toml
+sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${NIBIRU_PORT}317\"%; s%^address = \":8080\"%address = \":${NIBIRU_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${NIBIRU_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${NIBIRU_PORT}091\"%; s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:${NIBIRU_PORT}545\"%; s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:${NIBIRU_PORT}546\"%" $HOME/.nibid/config/app.toml
+
+```
+
+## Download Snapshot
+```
+curl -L https://snapshot.yeksin.net/nibiru/data.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.nibid
+
+```
+
+## Start service
+```
+sudo systemctl start nibid
+
+```
+
+## Check logs
+```
+sudo journalctl -u nibid -f -o cat
+
 ```
 
 ### Create wallet
@@ -103,14 +203,8 @@ echo 'export NIBIRU_VALOPER_ADDRESS='${NIBIRU_VALOPER_ADDRESS} >> $HOME/.bash_pr
 source $HOME/.bash_profile
 ```
 
-### Fund your wallet
-In order to create validator first you need to fund your wallet with testnet tokens.
-```
-curl -X POST -d '{"address": "'"$NIBIRU_WALLET_ADDRESS"'", "coins": ["10000000unibi","100000000000unusd"]}' https://faucet.testnet-1.nibiru.fi/
-```
-
-### Create validator
-Before creating validator please make sure that you have at least 1 nibi (1 nibi is equal to 1000000 unibi) and your node is synchronized
+# Create validator
+Before creating validator please make sure that you have at least 1 tlore (1 tlore is equal to 1000000 unibi) and your node is synchronized
 
 To check your wallet balance:
 ```
@@ -121,146 +215,19 @@ nibid query bank balances $NIBIRU_WALLET_ADDRESS
 To create your validator run command below
 ```
 nibid tx staking create-validator \
-  --amount 2000000unibi \
+  --amount 1000000unibi \
+  --commission-max-change-rate 0.01 \
+  --commission-max-rate 0.2 \
+  --commission-rate 0.1 \
   --from $WALLET \
-  --commission-max-change-rate "0.01" \
-  --commission-max-rate "0.2" \
-  --commission-rate "0.07" \
-  --min-self-delegation "1" \
-  --pubkey  $(nibid tendermint show-validator) \
+  --min-self-delegation 1 \
   --moniker $NODENAME \
-  --chain-id $NIBIRU_CHAIN_ID
+  --pubkey $(nibid tendermint show-validator) \
+  --chain-id nibiru-testnet-2 \
+  -y
 ```
 
-## Get currently connected peer list with ids
-```
-curl -sS http://localhost:${NIBIRU_PORT}657/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}'
-```
+# Check Cheatsheet
+- https://www.yeksin.net/nibiru/cheatsheet
 
-## Usefull commands
-### Service management
-Check logs
-```
-journalctl -fu nibid -o cat
-```
 
-Start service
-```
-sudo systemctl start nibid
-```
-
-Stop service
-```
-sudo systemctl stop nibid
-```
-
-Restart service
-```
-sudo systemctl restart nibid
-```
-
-### Node info
-Synchronization info
-```
-nibid status 2>&1 | jq .SyncInfo
-```
-
-Validator info
-```
-nibid status 2>&1 | jq .ValidatorInfo
-```
-
-Node info
-```
-nibid status 2>&1 | jq .NodeInfo
-```
-
-Show node id
-```
-nibid tendermint show-node-id
-```
-
-### Wallet operations
-List of wallets
-```
-nibid keys list
-```
-
-Recover wallet
-```
-nibid keys add $WALLET --recover
-```
-
-Delete wallet
-```
-nibid keys delete $WALLET
-```
-
-Get wallet balance
-```
-nibid query bank balances $NIBIRU_WALLET_ADDRESS
-```
-
-Transfer funds
-```
-nibid tx bank send $NIBIRU_WALLET_ADDRESS <TO_NIBIRU_WALLET_ADDRESS> 10000000unibi
-```
-
-### Voting
-```
-nibid tx gov vote 1 yes --from $WALLET --chain-id=$NIBIRU_CHAIN_ID
-```
-
-### Staking, Delegation and Rewards
-Delegate stake
-```
-nibid tx staking delegate $NIBIRU_VALOPER_ADDRESS 10000000unibi --from=$WALLET --chain-id=$NIBIRU_CHAIN_ID --gas=auto
-```
-
-Redelegate stake from validator to another validator
-```
-nibid tx staking redelegate <srcValidatorAddress> <destValidatorAddress> 10000000unibi --from=$WALLET --chain-id=$NIBIRU_CHAIN_ID --gas=auto
-```
-
-Withdraw all rewards
-```
-nibid tx distribution withdraw-all-rewards --from=$WALLET --chain-id=$NIBIRU_CHAIN_ID --gas=auto
-```
-
-Withdraw rewards with commision
-```
-nibid tx distribution withdraw-rewards $NIBIRU_VALOPER_ADDRESS --from=$WALLET --commission --chain-id=$NIBIRU_CHAIN_ID
-```
-
-### Validator management
-Edit validator
-```
-nibid tx staking edit-validator \
-  --moniker=$NODENAME \
-  --identity=<your_keybase_id> \
-  --website="<your_website>" \
-  --details="<your_validator_description>" \
-  --chain-id=$NIBIRU_CHAIN_ID \
-  --from=$WALLET
-```
-
-Unjail validator
-```
-nibid tx slashing unjail \
-  --broadcast-mode=block \
-  --from=$WALLET \
-  --chain-id=$NIBIRU_CHAIN_ID \
-  --gas=auto
-```
-
-### Delete node
-This commands will completely remove node from server. Use at your own risk!
-```
-sudo systemctl stop nibid
-sudo systemctl disable nibid
-sudo rm /etc/systemd/system/nibi* -rf
-sudo rm $(which nibid) -rf
-sudo rm $HOME/.nibid* -rf
-sudo rm $HOME/nibiru -rf
-sed -i '/NIBIRU_/d' ~/.bash_profile
-```
